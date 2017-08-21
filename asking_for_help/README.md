@@ -1,8 +1,10 @@
 # Asking for Help
 
-## Submitting a GutHub Issue
+## Submitting a GitHub Issue
 
 Click on the Issues tab in this repo to submit an issue.
+
+<br>
 
 ## Formatting your GitHub Issue to ask for help:
 
