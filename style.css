@@ -4,9 +4,16 @@
 }
 .userCard
 {
-  background: red;
+  background: grey;
+  border: 2px solid black;
 }
 .houseCard
 {
   background: green;
+  border: 2px solid black;
+}
+.tile
+{
+  margin: 0;
+  padding: 0;
 }

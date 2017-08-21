@@ -236,22 +236,40 @@ $(function()
       i--;
     }
     console.log(calledOnce);
+    return calledOnce;
   }
 
-
-  randomNumberArrayCreator(54);
-
-  function createCard(array)
+  function createCard(player)
   {
+    var tileIndex = randomNumberArrayCreator(16);
+    console.log(tileIndex);
     for (let i = 0; i < 16; i++)
     {
-      var $box = $('<div>').addClass("col-sm-4");
-      var $image = $('<img>').attr("src", "");
-      $box.append($p);
-      $('.userCard').append($box);
+      var $box = $('<div>').addClass("col-sm-3 tile");
+      var $image = $('<img>').attr("src", deck[tileIndex[i]].url).css('width', '120px').css('height', '175px');
+      $box.append($image);
+      // console.log(deck[tileIndex[i]].url);
+      $(`.${player}`).append($box);
     }
   }
+  createCard('userCard');
+  createCard('houseCard');
 
+  function callTiles ()
+  {
+    let order = randomNumberArrayCreator(54);
+    var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
+    var $flippedCard= $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
+    $('.deck').append($deck);
+    $('.deck').append($flippedCard);
+
+    order.forEach(function(el)
+    {
+      $flippedCard.attr('src', deck[el].url);
+    });
+
+  }
+  callTiles();
 // Check: all images display properly and their names match
 // for (let i = 0; i < 54; i++)
 // {
