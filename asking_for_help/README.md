@@ -1,5 +1,9 @@
 # Asking for Help
 
+## Submitting a GutHub Issue
+
+Click on the Issues tab in this repo to submit an issue.
+
 ## Formatting your GitHub Issue to ask for help:
 
 - PUSH OFTEN! Your code on GitHub should be up to date. Submitting an issue and linking us to old, out of date code is obviously going to hinder the process.
