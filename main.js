@@ -220,8 +220,7 @@ $(function()
     }
   ];
 
-
-  function randomNumber(limit)
+  function randomNumberArrayCreator(limit)
   {
     var max = limit;
     var calledOnce = [];
@@ -231,12 +230,17 @@ $(function()
       if(calledOnce.indexOf(call) == -1)
       {
           calledOnce.push(call);
-          return call;
+          // console.log(call);
       }
       else
       i--;
     }
+    console.log(calledOnce);
   }
+
+
+  randomNumberArrayCreator(54);
+
   function createCard(array)
   {
     for (let i = 0; i < 16; i++)
@@ -256,6 +260,4 @@ $(function()
 //   console.log(deck[i].name);
 // }
 
-
-randomNumber();
 });
