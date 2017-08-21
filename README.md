@@ -61,7 +61,7 @@ Don't be afraid to write code you know you'll have to remove later. Create tempo
 
 ## Project Timeline
 
-#### Monday 8/21
+### Monday 8/21
 
 - **9am** - Project specs will be delivered
 
@@ -82,7 +82,7 @@ Don't be afraid to write code you know you'll have to remove later. Create tempo
 	- Create a repo on your **personal** GitHub profile. This is so when you deploy to GitHub pages your app will be accessible outside of `visigoth`
 	- Create your project folder structure
 
-#### Tuesday 8/22
+### Tuesday 8/22
 
 - **9am** - Attendance
 - **10am** - Stand-up with your squad
@@ -94,7 +94,7 @@ Don't be afraid to write code you know you'll have to remove later. Create tempo
   - __What questions do you still have about the content?__: Any roadblocks?
 
 
-#### Wednesday 8/23
+### Wednesday 8/23
 
 - **9am** - Attendance
 - **10am** - Stand-up with your squad
@@ -109,7 +109,7 @@ Don't be afraid to write code you know you'll have to remove later. Create tempo
 	
 	- MVP
 
-#### Thursday 8/24
+### Thursday 8/24
 
 - **9am** - Attendance
 - **10am** - Stand-up with your squad
@@ -124,7 +124,7 @@ Don't be afraid to write code you know you'll have to remove later. Create tempo
 
 	- Polish your project (CSS, work on any bonus features, etc)
  
-#### Friday 8/25
+### Friday 8/25
 
 - **9am** - Attendance
 - **10am** - Stand-up with your squad
