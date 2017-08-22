@@ -330,7 +330,7 @@ $(function()
   };
 
   createPlayerArrays('user');
-  // createPlayerArrays('house');
+  createPlayerArrays('house');
 
   var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
   var $flippedCard= $('<img>').attr('src', '').css('width', '160px').css('height', '233px');
@@ -360,13 +360,7 @@ $(function()
   var $testButton = $('<button>').text('Did I win?');
   $('.flippedCard').append($testButton);
   $testButton.on('click', function(){
-    possibleWins = [];
-    rowWin(user);
-    columnWin(user);
-    cornersWin(user);
-    squareWin(user);
-    validWinCheck();
-    // console.log(possibleWins);
+    winCheck();
   });
 
   var possibleWins = [];
@@ -442,6 +436,17 @@ $(function()
         console.log("square win");
       }
     });
+  }
+
+  function winCheck ()
+  {
+    possibleWins = [];
+    rowWin(user);
+    columnWin(user);
+    cornersWin(user);
+    squareWin(user);
+    validWinCheck();
+    // console.log(possibleWins);
   }
 
   function validWinCheck ()
