@@ -263,15 +263,27 @@ $(function()
 
   var order = randomNumberArrayCreator(54);
   var count = 0;
-  (function callTiles (i)
-  {
-   setTimeout(function (){
-     $flippedCard.attr('src', deck[order[count]].url);
-     if (--i)
+
+  function callTiles(speed){
+   setTimeout(function(){
+      $flippedCard.attr('src', deck[order[count]].url);
       count++;
-      callTiles(i);
-   }, 3000)
-  })(54);
+      if (count < 54)
+      {
+         callTiles(speed);
+      }
+   }, speed)
+  }
+  callTiles(3000);
+  // (function callTiles (i)
+  // {
+  //  setTimeout(function (){
+  //    $flippedCard.attr('src', deck[order[count]].url);
+  //    if (--i)
+  //     count++;
+  //     callTiles(i);
+  //  }, 3000)
+  // })(54);
 
   // console.log(deck[order[count]]);
   // console.log(deck[order[count]].url);
