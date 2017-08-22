@@ -265,7 +265,6 @@ $(function()
           // console.log(user);
         });
 
-
         // event listerner: remove token on double click
         // change the value of the array element from the tile name to the tile image id
         $image.on('dblclick', function(){
@@ -273,7 +272,7 @@ $(function()
           let idValueString = $(this).attr('id');
           let idValue = parseInt(idValueString);
           let tileName = deck[idValue].name;
-          console.log(tileName);
+          // console.log(tileName);
           user.forEach(function(el){
             let indexTextToNum = el.indexOf(tileName);
             if (indexTextToNum >=0 )
@@ -291,8 +290,9 @@ $(function()
     results.push(nameArray);
     // console.log(results);
     return results;
-  }
-  // user and house are arrays; each one contains 4 arrays with 4 entries, which represent the rows and entries of the userCard and houseCard
+  } // end of createRandomCard function
+
+  // user and house are arrays; each one contains 4 arrays with 4 entries, which represent the rows and tiles of the userCard and houseCard
   var user = [];
   var house = [];
 
@@ -327,7 +327,6 @@ $(function()
       // console.log('r3', row3, toBeSpliced);
       // console.log('r4', row4, toBeSpliced);
     }
-
   };
 
   createPlayerArrays('user');
@@ -354,7 +353,34 @@ $(function()
       }
    }, speed)
   }
-  callTiles(2000);
+  callTiles(1000);
+
+
+  // Test code for winning functions
+  var $testButton = $('<button>').text('Did I win?');
+  $('.flippedCard').append($testButton);
+  $testButton.on('click', function(){
+    rowWin(user);
+  });
+
+  var possibleWins = [];
+  // end of Test code; delete when done
+  function stringType (entry)
+  {
+    return (typeof entry) == 'string';
+  }
+  function rowWin (card)
+  {
+    card.forEach(function(el)
+    {
+      if(el.every(stringType))
+      {
+        possibleWins.push(el);
+        console.log("WIN!");
+      }
+    });
+    console.log(possibleWins);
+  }
 
   // Self-invoking callTiles functions that works
   // (function callTiles (i)
