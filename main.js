@@ -353,7 +353,7 @@ $(function()
       }
    }, speed)
   }
-  callTiles(1000);
+  callTiles(3000);
 
 
   // Test code for winning functions
@@ -364,7 +364,9 @@ $(function()
     rowWin(user);
     columnWin(user);
     cornersWin(user);
-    console.log(possibleWins);
+    squareWin(user);
+    validWinCheck();
+    // console.log(possibleWins);
   });
 
   var possibleWins = [];
@@ -416,6 +418,44 @@ $(function()
       possibleWins.push(corners);
       console.log('corners win');
     }
+  }
+
+  function squareWin(card)
+  {
+    var userInOne = [];
+    card.forEach(function(element){
+      element.forEach(function(index){
+        userInOne.push(index);
+      })
+    });
+    var winningCombos = [[0, 1, 4, 5], [1, 2, 5, 6], [2, 3, 6, 7], [4, 5, 8, 9], [5, 6, 9, 10], [6, 7, 10, 11], [8, 9, 12, 13], [9, 10, 13, 14], [10, 11, 14, 15]];
+    winningCombos.forEach(function(el){
+      if ((typeof userInOne[el[0]]) == 'string' && (typeof userInOne[el[1]]) == 'string' && (typeof userInOne[el[2]]) == 'string' && (typeof userInOne[el[3]]) == 'string')
+      //  && (typeof userInOne[el[3])] == 'string'
+      {
+        var square = []
+        square.push(userInOne[el[0]]);
+        square.push(userInOne[el[1]]);
+        square.push(userInOne[el[2]]);
+        square.push(userInOne[el[3]]);
+        possibleWins.push(square);
+        console.log("square win");
+      }
+    });
+  }
+
+  function validWinCheck ()
+  {
+    var validWins = [];
+    possibleWins.forEach(function(el){
+      if (calledCards.indexOf(el[0]) >= 0 && calledCards.indexOf(el[1]) >= 0 && calledCards.indexOf(el[2]) >= 0 && calledCards.indexOf(el[3]) >= 0)
+        validWins.push(el);
+      else
+        console.log("Cheated; end game");
+    });
+    if (validWins.length > 0)
+      console.log("no cheating");
+      console.log(validWins);
   }
 
 
