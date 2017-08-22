@@ -240,12 +240,15 @@ $(function()
   function createRandomCard(player)
   {
     var deckIndexArray = randomNumberArrayCreator(16);
-    console.log(deckIndexArray);
     var  nameArray = [];
     for (let i = 0; i < 16; i++)
     {
       var $box = $('<div>').addClass("col-sm-3 tile");
       var $image = $('<img>').attr("src", deck[deckIndexArray[i]].url).css('width', '120px').css('height', '175px').css('position', 'relative');
+      if (player === 'house')
+      {
+        $box.attr('id', `box${deckIndexArray[i]}`);
+      }
       if (player==="user")
       {
         $image.attr('id', deckIndexArray[i]);
@@ -331,6 +334,7 @@ $(function()
 
   createPlayerArrays('user');
   createPlayerArrays('house');
+  console.log(house);
 
   var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
   var $flippedCard= $('<img>').attr('src', '').css('width', '160px').css('height', '233px');
@@ -346,6 +350,8 @@ $(function()
    setTimeout(function(){
       $flippedCard.attr('src', deck[order[count]].url);
       calledCards.push(deck[order[count]].name);
+      updatedHouse(count);
+      winCheckForHouse();
       count++;
       if (count < 54)
       {
@@ -354,6 +360,24 @@ $(function()
    }, speed)
   }
   callTiles(3000);
+
+  function updatedHouse ()
+  {
+    house.forEach(function(el){
+      let index = el.indexOf(order[count]);
+      if (index>=0)
+      {
+        el[index] = deck[order[count]].name;
+        let test = '#box' + order[count];
+        $(`${test} img`).first().css('width', '80px');
+        console.log(test);
+        // console.log(index);
+        // console.log(el);
+        // console.log(house);
+      }
+    });
+
+  }
 
 
   // Test code for winning functions
@@ -445,6 +469,16 @@ $(function()
     columnWin(user);
     cornersWin(user);
     squareWin(user);
+    validWinCheck();
+    // console.log(possibleWins);
+  }
+  function winCheckForHouse ()
+  {
+    possibleWins = [];
+    rowWin(house);
+    columnWin(house);
+    cornersWin(house);
+    squareWin(house);
     validWinCheck();
     // console.log(possibleWins);
   }
