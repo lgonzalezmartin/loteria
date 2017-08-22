@@ -220,44 +220,94 @@ $(function()
     }
   ];
 
-  function randomNumberArrayCreator(limit)
+  // randomNumberArrayCreator returns an array of the numbers 0-max in a random order
+  function randomNumberArrayCreator(max)
   {
-    var max = limit;
-    var calledOnce = [];
+    var calledNumbers = [];
     for(let i = 0; i < max ; i++)
     {
       var call = Math.floor(Math.random() * max);
-      if(calledOnce.indexOf(call) == -1)
-      {
-          calledOnce.push(call);
-          // console.log(call);
-      }
+      if(calledNumbers.indexOf(call) == -1)
+        calledNumbers.push(call);
       else
-      i--;
+        i--;
     }
-    // console.log(calledOnce);
-    return calledOnce;
+    return calledNumbers;
   }
 
+  // createRandomCard generates a card with 16 randomly chosen tiles; if the card is for the user (user), then it also adds event listeners to the 16 tiles in the card
   function createRandomCard(player)
   {
-    var tileIndex = randomNumberArrayCreator(16);
+    var deckIndexArray = randomNumberArrayCreator(16);
+    // console.log(deckIndexArray);
     var  nameArray = [];
-    console.log(tileIndex);
     for (let i = 0; i < 16; i++)
     {
       var $box = $('<div>').addClass("col-sm-3 tile");
-      var $image = $('<img>').attr("src", deck[tileIndex[i]].url).css('width', '120px').css('height', '175px');
+      var $image = $('<img>').attr("src", deck[deckIndexArray[i]].url).css('width', '120px').css('height', '175px').css('position', 'relative');
+      if (player==="user")
+      {
+        $image.attr('id', deckIndexArray[i]);
+        // event listener: add token to tile on click
+        $image.on('click', function(){
+          $(this).css('width', '80');
+        });
+        // event listerner: remove token on double click
+        $image.on('dblclick', function(){
+          $(this).css('width', '120');
+        });
+      }
       $box.append($image);
-      // console.log(deck[tileIndex[i]].url);
-      $(`.${player}`).append($box);
-      nameArray.push(deck[tileIndex[i]].name);
+      $(`.${player}Card`).append($box);
+      nameArray.push(deck[deckIndexArray[i]].name);
     }
-    console.log(nameArray);
-    return nameArray;
+    let results = [];
+    results.push(deckIndexArray);
+    results.push(nameArray);
+    // console.log(results);
+    return results;
   }
-  // var userCard = createRandomCard('userCard');
-  var houseCard = createRandomCard('houseCard');
+  // user and house are arrays; each one contains 4 arrays with 4 entries, which represent the rows and entries of the userCard and houseCard
+  var user = [];
+  var house = [];
+
+  function createPlayerArrays (player)
+  {
+    var toBeSpliced = createRandomCard(player)[0];
+    console.log('to be spliced', toBeSpliced);
+
+    var row1 = toBeSpliced.splice(0, 4);
+    var row2 = toBeSpliced.splice(0, 4);
+    var row3 = toBeSpliced.splice(0, 4);
+    var row4 = toBeSpliced.splice(0, 4);
+    if (player === 'user')
+    {
+      user.push(row1);
+      user.push(row2);
+      user.push(row3);
+      user.push(row4);
+      console.log('r1', row1, toBeSpliced);
+      console.log('r2', row2, toBeSpliced);
+      console.log('r3', row3, toBeSpliced);
+      console.log('r4', row4, toBeSpliced);
+    }
+    else
+    {
+      house.push(row1);
+      house.push(row2);
+      house.push(row3);
+      house.push(row4);
+      console.log('r1', row1, toBeSpliced);
+      console.log('r2', row2, toBeSpliced);
+      console.log('r3', row3, toBeSpliced);
+      console.log('r4', row4, toBeSpliced);
+    }
+
+  };
+
+  createPlayerArrays('user');
+  createPlayerArrays('house');
+
 
 
   var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
@@ -267,12 +317,13 @@ $(function()
 
   var order = randomNumberArrayCreator(54);
   var count = 0;
+  var calledCards = [];
 
   // callTiles needs to be invoked
   function callTiles(speed){
    setTimeout(function(){
       $flippedCard.attr('src', deck[order[count]].url);
-      
+      calledCards.push(deck[order[count]].name);
       count++;
       if (count < 54)
       {
@@ -280,7 +331,8 @@ $(function()
       }
    }, speed)
   }
-  callTiles(3000);
+  callTiles(2000);
+
   // Self-invoking callTiles functions that works
   // (function callTiles (i)
   // {
@@ -295,24 +347,5 @@ $(function()
   // console.log(deck[order[count]]);
   // console.log(deck[order[count]].url);
 
-
-  // function callTiles ()
-  // {
-  //   let order = randomNumberArrayCreator(54);
-  //   order.forEach(function(el)
-  //   {
-  //     $flippedCard.attr('src', deck[el].url);
-  //   });
-  //
-  // }
-  // callTiles();
-
-// Check: all images display properly and their names match
-// for (let i = 0; i < 54; i++)
-// {
-//   var $test = $('<img>').attr('src', deck[i].url).css('width', '150px');
-//   $('.container').append($test);
-//   console.log(deck[i].name);
-// }
 
 });
