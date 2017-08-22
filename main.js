@@ -235,7 +235,8 @@ $(function()
     return calledNumbers;
   }
 
-  // createRandomCard generates a card with 16 randomly chosen tiles; if the card is for the user (user), then it also adds event listeners to the 16 tiles in the card
+  // createRandomCard generates a card with 16 randomly chosen tiles; if the card is for the user ('user' is the argument),
+  // then it also adds event listeners to the 16 tiles in the card
   function createRandomCard(player)
   {
     var deckIndexArray = randomNumberArrayCreator(16);
@@ -248,27 +249,37 @@ $(function()
       if (player==="user")
       {
         $image.attr('id', deckIndexArray[i]);
-        // console.log(deckIndexArray[i]);
+
         // event listener: add token to tile on click
+        // uses the id of each image to locate it in the user playing card;
+        // it then changes that element from a numeric value (the id) to a string (the name of the tile)
         $image.on('click', function(){
           $(this).css('width', '80');
           let idValueString = $(this).attr('id');
           let idValue = parseInt(idValueString);
-          console.log(idValue);
           user.forEach(function(el){
             let indexNumToText = el.indexOf(idValue);
-            console.log(indexNumToText);
             if (indexNumToText>=0)
               el[indexNumToText]=deck[idValue].name;
           });
-
-          console.log(user);
-
-          // user[indexNumToText] = deck[idValue].name;
+          // console.log(user);
         });
+
+
         // event listerner: remove token on double click
+        // change the value of the array element from the tile name to the tile image id
         $image.on('dblclick', function(){
           $(this).css('width', '120');
+          let idValueString = $(this).attr('id');
+          let idValue = parseInt(idValueString);
+          let tileName = deck[idValue].name;
+          console.log(tileName);
+          user.forEach(function(el){
+            let indexTextToNum = el.indexOf(tileName);
+            if (indexTextToNum >=0 )
+              el[indexTextToNum] = idValue;
+          });
+          // console.log(user);
         });
       }
       $box.append($image);
