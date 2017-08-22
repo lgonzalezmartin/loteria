@@ -239,7 +239,7 @@ $(function()
   function createRandomCard(player)
   {
     var deckIndexArray = randomNumberArrayCreator(16);
-    // console.log(deckIndexArray);
+    console.log(deckIndexArray);
     var  nameArray = [];
     for (let i = 0; i < 16; i++)
     {
@@ -248,9 +248,23 @@ $(function()
       if (player==="user")
       {
         $image.attr('id', deckIndexArray[i]);
+        // console.log(deckIndexArray[i]);
         // event listener: add token to tile on click
         $image.on('click', function(){
           $(this).css('width', '80');
+          let idValueString = $(this).attr('id');
+          let idValue = parseInt(idValueString);
+          console.log(idValue);
+          user.forEach(function(el){
+            let indexNumToText = el.indexOf(idValue);
+            console.log(indexNumToText);
+            if (indexNumToText>=0)
+              el[indexNumToText]=deck[idValue].name;
+          });
+
+          console.log(user);
+
+          // user[indexNumToText] = deck[idValue].name;
         });
         // event listerner: remove token on double click
         $image.on('dblclick', function(){
@@ -274,7 +288,7 @@ $(function()
   function createPlayerArrays (player)
   {
     var toBeSpliced = createRandomCard(player)[0];
-    console.log('to be spliced', toBeSpliced);
+    // console.log('to be spliced', toBeSpliced);
 
     var row1 = toBeSpliced.splice(0, 4);
     var row2 = toBeSpliced.splice(0, 4);
@@ -286,10 +300,10 @@ $(function()
       user.push(row2);
       user.push(row3);
       user.push(row4);
-      console.log('r1', row1, toBeSpliced);
-      console.log('r2', row2, toBeSpliced);
-      console.log('r3', row3, toBeSpliced);
-      console.log('r4', row4, toBeSpliced);
+      // console.log('r1', row1, toBeSpliced);
+      // console.log('r2', row2, toBeSpliced);
+      // console.log('r3', row3, toBeSpliced);
+      // console.log('r4', row4, toBeSpliced);
     }
     else
     {
@@ -297,18 +311,16 @@ $(function()
       house.push(row2);
       house.push(row3);
       house.push(row4);
-      console.log('r1', row1, toBeSpliced);
-      console.log('r2', row2, toBeSpliced);
-      console.log('r3', row3, toBeSpliced);
-      console.log('r4', row4, toBeSpliced);
+      // console.log('r1', row1, toBeSpliced);
+      // console.log('r2', row2, toBeSpliced);
+      // console.log('r3', row3, toBeSpliced);
+      // console.log('r4', row4, toBeSpliced);
     }
 
   };
 
   createPlayerArrays('user');
-  createPlayerArrays('house');
-
-
+  // createPlayerArrays('house');
 
   var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
   var $flippedCard= $('<img>').attr('src', '').css('width', '160px').css('height', '233px');
@@ -343,9 +355,4 @@ $(function()
   //     callTiles(i);
   //  }, 3000)
   // })(54);
-
-  // console.log(deck[order[count]]);
-  // console.log(deck[order[count]].url);
-
-
 });
