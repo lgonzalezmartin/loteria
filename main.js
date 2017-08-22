@@ -235,13 +235,14 @@ $(function()
       else
       i--;
     }
-    console.log(calledOnce);
+    // console.log(calledOnce);
     return calledOnce;
   }
 
   function createRandomCard(player)
   {
     var tileIndex = randomNumberArrayCreator(16);
+    var  nameArray = [];
     console.log(tileIndex);
     for (let i = 0; i < 16; i++)
     {
@@ -250,10 +251,13 @@ $(function()
       $box.append($image);
       // console.log(deck[tileIndex[i]].url);
       $(`.${player}`).append($box);
+      nameArray.push(deck[tileIndex[i]].name);
     }
+    console.log(nameArray);
+    return nameArray;
   }
-  createRandomCard('userCard');
-  createRandomCard('houseCard');
+  // var userCard = createRandomCard('userCard');
+  var houseCard = createRandomCard('houseCard');
 
 
   var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
@@ -264,9 +268,11 @@ $(function()
   var order = randomNumberArrayCreator(54);
   var count = 0;
 
+  // callTiles needs to be invoked
   function callTiles(speed){
    setTimeout(function(){
       $flippedCard.attr('src', deck[order[count]].url);
+      
       count++;
       if (count < 54)
       {
@@ -275,6 +281,7 @@ $(function()
    }, speed)
   }
   callTiles(3000);
+  // Self-invoking callTiles functions that works
   // (function callTiles (i)
   // {
   //  setTimeout(function (){
