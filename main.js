@@ -360,7 +360,10 @@ $(function()
   var $testButton = $('<button>').text('Did I win?');
   $('.flippedCard').append($testButton);
   $testButton.on('click', function(){
+    possibleWins = [];
     rowWin(user);
+    columnWin(user);
+    console.log(possibleWins);
   });
 
   var possibleWins = [];
@@ -369,6 +372,8 @@ $(function()
   {
     return (typeof entry) == 'string';
   }
+
+  // rowWin checks to see if a row of the user or house card has tokens in all its entries
   function rowWin (card)
   {
     card.forEach(function(el)
@@ -376,11 +381,27 @@ $(function()
       if(el.every(stringType))
       {
         possibleWins.push(el);
-        console.log("WIN!");
+        console.log("row win");
       }
     });
-    console.log(possibleWins);
   }
+
+  function columnWin (card)
+  {
+    for (let i = 0; i < 4; i++)
+    {
+      if ((typeof card[0][i]) == 'string' && (typeof card[1][i]) == 'string' && (typeof card[2][i]) == 'string' && (typeof card[3][i]) == 'string')
+      {
+        column = [];
+        column.push(card[0][i]);
+        column.push(card[1][i]);
+        column.push(card[2][i]);
+        column.push(card[3][i]);
+        possibleWins.push(column);
+      }
+    }
+  }
+
 
   // Self-invoking callTiles functions that works
   // (function callTiles (i)
