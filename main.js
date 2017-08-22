@@ -363,6 +363,7 @@ $(function()
     possibleWins = [];
     rowWin(user);
     columnWin(user);
+    cornersWin(user);
     console.log(possibleWins);
   });
 
@@ -398,7 +399,22 @@ $(function()
         column.push(card[2][i]);
         column.push(card[3][i]);
         possibleWins.push(column);
+        console.log("column win");
       }
+    }
+  }
+
+  function cornersWin (card)
+  {
+    if ((typeof card[0][0]) == 'string' && (typeof card[0][3]) == 'string' && (typeof card[3][0]) == 'string' && (typeof card[3][3]) == 'string')
+    {
+      let corners = [];
+      corners.push(card[0][0]);
+      corners.push(card[0][3]);
+      corners.push(card[3][0]);
+      corners.push(card[3][3]);
+      possibleWins.push(corners);
+      console.log('corners win');
     }
   }
 
