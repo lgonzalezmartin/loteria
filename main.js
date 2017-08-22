@@ -239,7 +239,7 @@ $(function()
     return calledOnce;
   }
 
-  function createCard(player)
+  function createRandomCard(player)
   {
     var tileIndex = randomNumberArrayCreator(16);
     console.log(tileIndex);
@@ -252,24 +252,42 @@ $(function()
       $(`.${player}`).append($box);
     }
   }
-  createCard('userCard');
-  createCard('houseCard');
+  createRandomCard('userCard');
+  createRandomCard('houseCard');
 
-  function callTiles ()
+
+  var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
+  var $flippedCard= $('<img>').attr('src', '').css('width', '160px').css('height', '233px');
+  $('.deck').append($deck);
+  $('.flippedCard').append($flippedCard);
+
+  var order = randomNumberArrayCreator(54);
+  var count = 0;
+  (function callTiles (i)
   {
-    let order = randomNumberArrayCreator(54);
-    var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
-    var $flippedCard= $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
-    $('.deck').append($deck);
-    $('.deck').append($flippedCard);
+   setTimeout(function (){
+     $flippedCard.attr('src', deck[order[count]].url);
+     if (--i)
+      count++;
+      callTiles(i);
+   }, 3000)
+  })(54);
 
-    order.forEach(function(el)
-    {
-      $flippedCard.attr('src', deck[el].url);
-    });
+  // console.log(deck[order[count]]);
+  // console.log(deck[order[count]].url);
 
-  }
-  callTiles();
+
+  // function callTiles ()
+  // {
+  //   let order = randomNumberArrayCreator(54);
+  //   order.forEach(function(el)
+  //   {
+  //     $flippedCard.attr('src', deck[el].url);
+  //   });
+  //
+  // }
+  // callTiles();
+
 // Check: all images display properly and their names match
 // for (let i = 0; i < 54; i++)
 // {
