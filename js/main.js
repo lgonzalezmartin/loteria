@@ -156,19 +156,17 @@ $(function()
       let gameOver = winCheckForHouse();
       if (gameOver)
       {
-        setTimeout(function(){alert('House wins');}, 5000);
+        setTimeout(function(){alert('House wins');}, 500);
       }
 
       if (count < 53 && validWins.length === 0 && !gameOver)
       {
-        console.log('entered if statement with count<54, game is not over, and valid wins is 0');
         count++;
         callTiles(speed);
-        console.log(!gameOver);
       }
    }, speed)
   }
-  callTiles(200);
+  callTiles(2000);
 
   function updatedHouse ()
   {
@@ -205,6 +203,7 @@ $(function()
   $('.flippedCard').append($testButton);
   $testButton.on('click', function(){
     let gameOver = winCheck();
+    $(this).prop('disabled', true);
   });
 
   var possibleWins = [];
