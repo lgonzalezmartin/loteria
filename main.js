@@ -224,9 +224,10 @@ $(function()
   function randomNumberArrayCreator(max)
   {
     var calledNumbers = [];
+    var limit = deck.length;
     for(let i = 0; i < max ; i++)
     {
-      var call = Math.floor(Math.random() * max);
+      var call = Math.floor(Math.random() * limit);
       if(calledNumbers.indexOf(call) == -1)
         calledNumbers.push(call);
       else
@@ -258,6 +259,19 @@ $(function()
         // it then changes that element from a numeric value (the id) to a string (the name of the tile)
         $image.on('click', function(){
           $(this).css('width', '80');
+          // $("#divID img").each(function() {
+          //     var $overlay = $('<div></div>');
+          //     $overlay.css({
+          //         position: "relative",
+          //         display: "inline-block",
+          //         width: $(this).width(),
+          //         height: $(this).height(),
+          //         backgroundPosition: "center center",
+          //         backgroundImage: "url(loading-image.gif)"
+          //     });
+          //     $(this).wrap($overlay);
+          // });
+
           let idValueString = $(this).attr('id');
           let idValue = parseInt(idValueString);
           user.forEach(function(el){
@@ -302,7 +316,7 @@ $(function()
   function createPlayerArrays (player)
   {
     var toBeSpliced = createRandomCard(player)[0];
-    // console.log('to be spliced', toBeSpliced);
+    // console.log(player, toBeSpliced);
 
     var row1 = toBeSpliced.splice(0, 4);
     var row2 = toBeSpliced.splice(0, 4);
@@ -334,7 +348,6 @@ $(function()
 
   createPlayerArrays('user');
   createPlayerArrays('house');
-  console.log(house);
 
   var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
   var $flippedCard= $('<img>').attr('src', '').css('width', '160px').css('height', '233px');
@@ -351,15 +364,16 @@ $(function()
       $flippedCard.attr('src', deck[order[count]].url);
       calledCards.push(deck[order[count]].name);
       updatedHouse(count);
-      winCheckForHouse();
+      // winCheckForHouse();
       count++;
-      if (count < 54)
+      if (count < 54 && validWins.length === 0)
       {
          callTiles(speed);
+         winCheckForHouse();
       }
    }, speed)
   }
-  callTiles(3000);
+  // callTiles(3000);
 
   function updatedHouse ()
   {
@@ -434,7 +448,7 @@ $(function()
       corners.push(card[3][0]);
       corners.push(card[3][3]);
       possibleWins.push(corners);
-      console.log('corners win');
+      // console.log('corners win');
     }
   }
 
@@ -457,7 +471,7 @@ $(function()
         square.push(userInOne[el[2]]);
         square.push(userInOne[el[3]]);
         possibleWins.push(square);
-        console.log("square win");
+        // console.log("square win");
       }
     });
   }
@@ -469,7 +483,9 @@ $(function()
     columnWin(user);
     cornersWin(user);
     squareWin(user);
-    validWinCheck();
+    let gameOver = validWinCheck();
+    if (gameOver)
+      alert("You won!");
     // console.log(possibleWins);
   }
   function winCheckForHouse ()
@@ -479,22 +495,27 @@ $(function()
     columnWin(house);
     cornersWin(house);
     squareWin(house);
-    validWinCheck();
+    let gameOver = validWinCheck();
+    if (gameOver)
+      alert('You lose!');
     // console.log(possibleWins);
   }
-
+  var validWins = [];
   function validWinCheck ()
   {
-    var validWins = [];
     possibleWins.forEach(function(el){
       if (calledCards.indexOf(el[0]) >= 0 && calledCards.indexOf(el[1]) >= 0 && calledCards.indexOf(el[2]) >= 0 && calledCards.indexOf(el[3]) >= 0)
         validWins.push(el);
-      else
-        console.log("Cheated; end game");
+
     });
     if (validWins.length > 0)
-      console.log("no cheating");
-      console.log(validWins);
+      return true;
+    else
+    {
+      return false;
+    }
+
+
   }
 
 
