@@ -3,15 +3,15 @@ var deckSource = (function(){
   return {
       cards: [
       {
-        url: "images/deck/alacran.jpg",
+        url: "images/Deck/alacran.jpg",
         name: "alacran"
       },
       {
-        url: "images/deck/apache.jpg",
-        name: "apache"
+        url: "images/Deck/mike.png",
+        name: "mike"
       },
       {
-        url: "images/deck/arana.jpg",
+        url: "images/Deck/arana.jpg",
         name: "arana"
       },
       {

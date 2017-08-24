@@ -24,3 +24,7 @@ $testButtonPlayAgain.on('click', newRound);
 var $testButtonSameSettings = $('<button>').text('Same settings!');
 $('.flippedCard').append($testButtonSameSettings);
 // $testButtonSameSettings.on('click', newRoundSameSettings);
+
+git push github master
+// pushes to my personal github
+change paths to pictures
