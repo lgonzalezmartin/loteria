@@ -1,132 +1,12 @@
 $(function()
 {
   console.log("JS connected");
+
   var deck = App.deckSource()().cards;
+  var deckOfCards = deck;
+  user = App.players()().playerRows('user', deck);
+  house = App.players()().playerRows('house', deck);
 
-  // // randomNumberArrayCreator returns an array of the numbers 0-max in a random order
-  function randomNumberArrayCreator(max)
-  {
-    var calledNumbers = [];
-    var limit = deck.length;
-    for(let i = 0; i < max ; i++)
-    {
-      var call = Math.floor(Math.random() * limit);
-      if(calledNumbers.indexOf(call) == -1)
-        calledNumbers.push(call);
-      else
-        i--;
-    }
-    return calledNumbers;
-  }
-
-  // createRandomCard generates a card with 16 randomly chosen tiles; if the card is for the user ('user' is the argument),
-  // then it also adds event listeners to the 16 tiles in the card
-  function createRandomCard(player)
-  {
-    var deckIndexArray = randomNumberArrayCreator(16);
-    var  nameArray = [];
-    for (let i = 0; i < 16; i++)
-    {
-      var $box = $('<div>').addClass("col-sm-3 tile").css('position', 'relative');
-      var $image = $('<img>').attr("src", deck[deckIndexArray[i]].url).css('width', '120px').css('height', '175px').css('position', 'relative');
-      if (player === 'house')
-      {
-        $box.attr('id', `box${deckIndexArray[i]}`);
-      }
-      if (player==="user")
-      {
-        $image.attr('id', deckIndexArray[i]);
-
-        // event listener: add token to tile on click
-        // uses the id of each image to locate it in the user playing card;
-        // it then changes that element from a numeric value (the id) to a string (the name of the tile)
-        // $image.one('click', addCheck());
-        var addCheck = function(){
-          var $token = $('<div>');
-          $(this).parent().append($token);
-          $token.css({
-                  position: "absolute",
-                  left: '30%',
-                  top: "40%",
-                  display: "inline-block",
-                  width: "45px",
-                  height: "45px",
-                  backgroundPosition: "center center",
-                  backgroundImage: "url(images/check.jpg)"
-          });
-          let idValueString = $(this).attr('id');
-          let idValue = parseInt(idValueString);
-          user.forEach(function(el){
-            let indexNumToText = el.indexOf(idValue);
-            if (indexNumToText>=0)
-              el[indexNumToText]=deck[idValue].name;
-          });
-          // console.log(user);
-        };
-        $image.one('click', addCheck);
-
-        // event listerner: remove token on double click
-        // change the value of the array element from the tile name to the tile image id
-        $image.on('dblclick', function(){
-          console.log('double click', $(this));
-
-          // $(this).css('width', '120');
-          $(this).next().remove();
-          $(this).one('click', addCheck);
-          let idValueString = $(this).attr('id');
-          let idValue = parseInt(idValueString);
-          let tileName = deck[idValue].name;
-          // console.log(tileName);
-          user.forEach(function(el){
-            let indexTextToNum = el.indexOf(tileName);
-            if (indexTextToNum >=0 )
-              el[indexTextToNum] = idValue;
-          });
-          // console.log(user);
-        });
-      }
-      $box.append($image);
-      $(`.${player}Card`).append($box);
-      nameArray.push(deck[deckIndexArray[i]].name);
-    }
-    let results = [];
-    results.push(deckIndexArray);
-    results.push(nameArray);
-    // console.log(results);
-    return results;
-  } // end of createRandomCard function
-
-  // user and house are arrays; each one contains 4 arrays with 4 entries, which represent the rows and tiles of the userCard and houseCard
-  var user = [];
-  var house = [];
-
-  function createPlayerArrays (player)
-  {
-    var toBeSpliced = createRandomCard(player)[0];
-    // console.log(player, toBeSpliced);
-
-    var row1 = toBeSpliced.splice(0, 4);
-    var row2 = toBeSpliced.splice(0, 4);
-    var row3 = toBeSpliced.splice(0, 4);
-    var row4 = toBeSpliced.splice(0, 4);
-    if (player === 'user')
-    {
-      user.push(row1);
-      user.push(row2);
-      user.push(row3);
-      user.push(row4);
-    }
-    else
-    {
-      house.push(row1);
-      house.push(row2);
-      house.push(row3);
-      house.push(row4);
-    }
-  };
-
-  createPlayerArrays('user');
-  createPlayerArrays('house');
 
   var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
   var $flippedCard= $('<img>').attr('src', '').css('width', '160px').css('height', '233px');
@@ -135,7 +15,7 @@ $(function()
   $('.deck').append($flippedCard);
   $('.flippedCard').append(placeholder);
 
-  var order = randomNumberArrayCreator(54);
+  var order = App.board()().calledNumbers(54, deck);
   var count = 0;
   var calledCards = [];
 
@@ -155,7 +35,6 @@ $(function()
       let gameOver = winCheckForHouse();
       if (gameOver)
       {
-        console.log(gameOver);
         setTimeout(function(){alert('House wins');}, 500);
       }
 

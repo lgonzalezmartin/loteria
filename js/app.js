@@ -6,12 +6,14 @@ var App = (function(){
   return {
     deckSource: function(){
       return deckSource
+    },
+    board: function(){
+      return board
+    },
+    players: function(){
+      return players
     }
-//     // ,
-//     // board: function()
-//     // {
-//     //   return board
-//     // },
+    // ,
 //     // winLogicSource: function()
 //     // {
 //     //   return winLogicSource
