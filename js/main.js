@@ -64,14 +64,10 @@ $(function()
                 backgroundPosition: "center center",
                 backgroundImage: "url(images/check.jpg)"
         });
-        // console.log(index);
-        // console.log(el);
-        // console.log(house);
       }
     });
 
   }
-
 
   // Test code for winning functions
   var $testButton = $('<button>').text('Did I win?');
