@@ -1,7 +1,6 @@
 $(function()
 {
   console.log("JS connected");
-
   // create deck
   deck = App.deckSource()().cards;
 
@@ -23,14 +22,16 @@ $(function()
 
   function newRoundSameSettings ()
   {
-
+    user = App.winLogicSource()().clearChecks(user);
     house = App.winLogicSource()().clearChecks(house);
     possibleWins = [];
     validWins = [];
     count = 0;
+    order = App.board()().calledNumbers(54);
     gameOver = false;
     calledCards = [];
-    callTiles(200);
+    $('#loteria').prop('disabled', false);
+    callTiles(2000);
   }
 
   function callTiles(speed)
@@ -39,14 +40,17 @@ $(function()
    {
      if (!gameOver)
      {
+       console.log(speed);
        calledCards.push(deck[order[count]].name);
        // $flippedCard.attr('src', deck[order[count]].url);
        $flippedCard.attr('src', deck[order[count]].url);
+       console.log(order, deck[order[count]].name);
        updatedHouse(count);
        gameOver = App.winLogicSource()().houseWinCheck();
        if (gameOver)
        {
          setTimeout(function(){alert('House wins');}, 500);
+
        }
 
        if (count < 53 && validWins.length === 0 && !gameOver)
@@ -54,12 +58,14 @@ $(function()
          count++;
          callTiles(speed);
        }
+     } else {
+       console.log("i should be stopping")
      }
 
    }, speed)
   }
 
-  callTiles(500);
+  callTiles(2000);
 
   function updatedHouse ()
   {
@@ -88,16 +94,22 @@ $(function()
   }
 
   // Test code for winning functions
-  var $testButton = $('<button>').text('Did I win?');
+  var $testButton = $('<button>').attr('id', 'loteria').text('Loteria').addClass('btn-success btn');
   $('.flippedCard').append($testButton);
   $testButton.on('click', function(){
     let gameOver = App.winLogicSource()().userWinCheck();
     $(this).prop('disabled', true);
   });
 
-  var $testButtonSameSettings = $('<button>').text('Same settings!');
+  var $testButtonSameSettings = $('<button>').addClass('btn-info btn').text('Same settings!');
   $('.flippedCard').append($testButtonSameSettings);
   $testButtonSameSettings.on('click', newRoundSameSettings);
+
+  // bootstrap test code
+  //
+  // var $test = $('<div>').addClass('badge').text("testing");
+  // $('.flippedCard').append($test);
+
 possibleWins = [];
 validWins = [];
 

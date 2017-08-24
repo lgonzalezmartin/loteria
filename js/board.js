@@ -30,7 +30,7 @@ var board = (function(){
       for (let i = 0; i < 16; i++)
       {
         var $box = $('<div>').addClass("col-sm-3 tile").css('position', 'relative');
-        var $image = $('<img>').attr("src", deck[deckIndexArray[i]].url).css('width', '120px').css('height', '175px').css('position', 'relative');
+        var $image = $('<img>').attr("src", deck[deckIndexArray[i]].url).css('width', '120px').css('height', '175px').css('position', 'relative').addClass('img-rounded');
         if (player === 'house')
         {
           $box.attr('id', `box${deckIndexArray[i]}`);
@@ -44,7 +44,7 @@ var board = (function(){
           // it then changes that element from a numeric value (the id) to a string (the name of the tile)
           var addCheck = function()
           {
-            var $token = $('<div>');
+            var $token = $('<div>').addClass('token');
             $(this).parent().append($token);
             $token.css({
                     position: "absolute",

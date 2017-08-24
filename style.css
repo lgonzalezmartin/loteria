@@ -17,3 +17,34 @@
   margin: 0;
   padding: 0;
 }
+.jumbotron
+{
+  background: #e05757;
+}
+.jumbotronTransp
+{
+ padding: 30px;
+ margin-bottom: 30px;
+ font-weight: 200;
+ line-height: 2.1428571435;
+ color: white;
+ font-family: 'Indie Flower', cursive;
+ background-color: #e05757;
+ }
+
+ h1
+ {
+   font-size: 100px;
+ }
+ h2
+ {
+  font-fize: 40px;
+
+ }
+.token
+{
+  border-radius: 55%;
+}
+.container{
+        width: 1285px;
+    }
