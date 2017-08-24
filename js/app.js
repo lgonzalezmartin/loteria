@@ -12,11 +12,10 @@ var App = (function(){
     },
     players: function(){
       return players
+    },
+    winLogicSource: function()
+    {
+      return winLogicSource
     }
-    // ,
-//     // winLogicSource: function()
-//     // {
-//     //   return winLogicSource
-//     // }
   }
 })();
