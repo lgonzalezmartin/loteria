@@ -1,6 +1,7 @@
 $(function()
 {
   console.log("JS connected");
+  console.log("Checking if the push went through");
   // create deck
   deck = App.deckSource()().cards;
 
