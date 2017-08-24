@@ -40,19 +40,15 @@ $(function()
    {
      if (!gameOver)
      {
-       console.log(speed);
        calledCards.push(deck[order[count]].name);
        // $flippedCard.attr('src', deck[order[count]].url);
        $flippedCard.attr('src', deck[order[count]].url).addClass('img-rounded');
-       console.log(order, deck[order[count]].name);
        updatedHouse(count);
        gameOver = App.winLogicSource()().houseWinCheck();
        if (gameOver)
        {
          setTimeout(function(){alert('House wins');}, 500);
-
        }
-
        if (count < 53 && validWins.length === 0 && !gameOver)
        {
          count++;
@@ -61,7 +57,6 @@ $(function()
      } else {
        console.log("i should be stopping")
      }
-
    }, speed)
   }
 

@@ -15,207 +15,207 @@ var deckSource = (function(){
         name: "arana"
       },
       {
-        url: "images/deck/arbol.jpg",
+        url: "images/Deck/arbol.jpg",
         name: "arbol"
       },
       {
-        url: "images/deck/arpa.jpg",
+        url: "images/Deck/arpa.jpg",
         name: "arpa"
       },
       {
-        url: "images/deck/bandera.jpg",
+        url: "images/Deck/bandera.jpg",
         name: "bandera"
       },
       {
-        url: "images/deck/bandolon.jpg",
+        url: "images/Deck/bandolon.jpg",
         name: "bandolon"
       },
       {
-        url: "images/deck/barril.jpg",
+        url: "images/Deck/barril.jpg",
         name: "barril"
       },
       {
-        url: "images/deck/borracho.jpg",
+        url: "images/Deck/borracho.jpg",
         name: "borracho"
       },
       {
-        url: "images/deck/bota.jpg",
+        url: "images/Deck/bota.jpg",
         name: "bota"
       },
       {
-        url: "images/deck/botella.jpg",
+        url: "images/Deck/botella.jpg",
         name: "botella"
       },
       {
-        url: "images/deck/calavera.jpg",
+        url: "images/Deck/calavera.jpg",
         name: "calavera"
       },
       {
-        url: "images/deck/camaron.jpg",
+        url: "images/Deck/camaron.jpg",
         name: "camaron"
       },
       {
-        url: "images/deck/campana.jpg",
+        url: "images/Deck/campana.jpg",
         name: "campana"
       },
       {
-        url: "images/deck/cantarito.jpg",
+        url: "images/Deck/cantarito.jpg",
         name: "cantarito"
       },
       {
-        url: "images/deck/catrin.jpg",
+        url: "images/Deck/catrin.jpg",
         name: "catrin"
       },
       {
-        url: "images/deck/cazo.jpg",
+        url: "images/Deck/cazo.jpg",
         name: "cazo"
       },
       {
-        url: "images/deck/chalupa.jpg",
+        url: "images/Deck/chalupa.jpg",
         name: "chalupa"
       },
       {
-        url: "images/deck/corazon.jpg",
+        url: "images/Deck/corazon.jpg",
         name: "corazon"
       },
       {
-        url: "images/deck/corona.jpg",
+        url: "images/Deck/corona.jpg",
         name: "corona"
       },
       {
-        url: "images/deck/cotorro.jpg",
+        url: "images/Deck/cotorro.jpg",
         name: "cotorro"
       },
       {
-        url: "images/deck/dama.jpg",
+        url: "images/Deck/dama.jpg",
         name: "dama"
       },
       {
-        url: "images/deck/diablito.jpg",
+        url: "images/Deck/diablito.jpg",
         name: "diablito"
       },
       {
-        url: "images/deck/escalera.jpg",
+        url: "images/Deck/escalera.jpg",
         name: "escalera"
       },
       {
-        url: "images/deck/estrella.jpg",
+        url: "images/Deck/estrella.jpg",
         name: "estrella"
       },
       {
-        url: "images/deck/gallito.jpg",
+        url: "images/Deck/gallito.jpg",
         name: "gallito"
       },
       {
-        url: "images/deck/garza.jpg",
+        url: "images/Deck/garza.jpg",
         name: "garza"
       },
       {
-        url: "images/deck/gorrito.jpg",
+        url: "images/Deck/gorrito.jpg",
         name: "gorrito"
       },
       {
-        url: "images/deck/jaras.jpg",
+        url: "images/Deck/jaras.jpg",
         name: "jaras"
       },
       {
-        url: "images/deck/luna.jpg",
+        url: "images/Deck/luna.jpg",
         name: "luna"
       },
       {
-        url: "images/deck/maceta.jpg",
+        url: "images/Deck/maceta.jpg",
         name: "maceta"
       },
       {
-        url: "images/deck/mano.jpg",
+        url: "images/Deck/mano.jpg",
         name: "mano"
       },
       {
-        url: "images/deck/melon.jpg",
+        url: "images/Deck/melon.jpg",
         name: "melon"
       },
       {
-        url: "images/deck/muerte.jpg",
+        url: "images/Deck/muerte.jpg",
         name: "muerte"
       },
       {
-        url: "images/deck/mundo.jpg",
+        url: "images/Deck/mundo.jpg",
         name: "mundo"
       },
       {
-        url: "images/deck/musico.jpg",
+        url: "images/Deck/musico.jpg",
         name: "musico"
       },
       {
-        url: "images/deck/negrito.jpg",
+        url: "images/Deck/negrito.jpg",
         name: "negrito"
       },
       {
-        url: "images/deck/nopal.jpg",
+        url: "images/Deck/nopal.jpg",
         name: "nopal"
       },
       {
-        url: "images/deck/pajaro.jpg",
+        url: "images/Deck/pajaro.jpg",
         name: "pajaro"
       },
       {
-        url: "images/deck/palma.jpg",
+        url: "images/Deck/palma.jpg",
         name: "palma"
       },
       {
-        url: "images/deck/paraguas.jpg",
+        url: "images/Deck/paraguas.jpg",
         name: "paraguas"
       },
       {
-        url: "images/deck/pera.jpg",
+        url: "images/Deck/pera.jpg",
         name: "pera"
       },
       {
-        url: "images/deck/pescado.jpg",
+        url: "images/Deck/pescado.jpg",
         name: "pescado"
       },
       {
-        url: "images/deck/pino.jpg",
+        url: "images/Deck/pino.jpg",
         name: "pino"
       },
       {
-        url: "images/deck/rana.jpg",
+        url: "images/Deck/rana.jpg",
         name: "rana"
       },
       {
-        url: "images/deck/rosa.jpg",
+        url: "images/Deck/rosa.jpg",
         name: "rosa"
       },
       {
-        url: "images/deck/sandia.jpg",
+        url: "images/Deck/sandia.jpg",
         name: "sandia"
       },
       {
-        url: "images/deck/sirena.jpg",
+        url: "images/Deck/sirena.jpg",
         name: "sirena"
       },
       {
-        url: "images/deck/sol.jpg",
+        url: "images/Deck/sol.jpg",
         name: "sol"
       },
       {
-        url: "images/deck/soldado.jpg",
+        url: "images/Deck/soldado.jpg",
         name: "soldado"
       },
       {
-        url: "images/deck/tambor.jpg",
+        url: "images/Deck/tambor.jpg",
         name: "tambor"
       },
       {
-        url: "images/deck/valiente.jpg",
+        url: "images/Deck/valiente.jpg",
         name: "valiente"
       },
       {
-        url: "images/deck/venado.jpg",
+        url: "images/Deck/venado.jpg",
         name: "venado"
       },
       {
-        url: "images/deck/violoncello.jpg",
+        url: "images/Deck/violoncello.jpg",
         name: "violoncello"
       }
     ]
