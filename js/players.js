@@ -10,6 +10,7 @@ var players = (function(){
         var row2 = toBeSpliced.splice(0, 4);
         var row3 = toBeSpliced.splice(0, 4);
         var row4 = toBeSpliced.splice(0, 4);
+        
         if (player === 'user')
         {
           var user = [];

@@ -2,11 +2,12 @@ $(function()
 {
   console.log("JS connected");
 
+  // create deck
   deck = App.deckSource()().cards;
-  var deckOfCards = deck;
+
+  // create user and hosue cards
   user = App.players()().playerRows('user');
   house = App.players()().playerRows('house');
-
 
   var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
   var $flippedCard= $('<img>').attr('src', '').css('width', '160px').css('height', '233px');
@@ -19,11 +20,6 @@ $(function()
   var count = 0;
   var calledCards = [];
 
-  // function test(){
-  //   alert('House wins');
-  // }
-
-  // callTiles needs to be invoked
   function callTiles(speed)
   {
    setTimeout(function()

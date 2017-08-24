@@ -1,11 +1,12 @@
+// The code here is responsible for creating the user and house playing cards that
+// the user sees on the screen
 var board = (function(){
   return {
-    // // randomNumberArrayCreator returns an array of the numbers 0-max in a random order
+    // calledNumbers returns an array of the numbers 0-max in a random order
     calledNumbers: function randomNumberArrayCreator(max)
     {
       var calledNumbers = [];
-      
-      var limit = 54;
+      var limit = deck.length;
       for(let i = 0; i < max ; i++)
       {
         var call = Math.floor(Math.random() * limit);
@@ -17,15 +18,15 @@ var board = (function(){
       return calledNumbers;
     },
 
-    // createRandomCard generates a card with 16 randomly chosen tiles; if the card is for the user ('user' is the argument),
+    // createRandomCard generates a card with 16 randomly chosen tiles;
+    // if the card is for the user ('user' is the argument),
     // then it also adds event listeners to the 16 tiles in the card
+    // results returns an object with 2 arrays: one containing the
+    // card numbers the other containing the card names
     results: function createRandomCard(player, deckOfCards)
     {
-
-      var deckIndexArray = App.board()().calledNumbers(16);
-
+      var deckIndexArray = App.board()().calledNumbers(16); // get 16 random numbers
       var  nameArray = [];
-
       for (let i = 0; i < 16; i++)
       {
         var $box = $('<div>').addClass("col-sm-3 tile").css('position', 'relative');
@@ -36,15 +37,13 @@ var board = (function(){
         }
         if (player==="user")
         {
-          // players calls results and below it calls players
-          // var user = App.players()().playerRows('user');
           $image.attr('id', deckIndexArray[i]);
 
           // event listener: add token to tile on click
-          // uses the id of each image to locate it in the user playing card;
+          // uses the id of each image to locate it in the user playing card (global variable 'user');
           // it then changes that element from a numeric value (the id) to a string (the name of the tile)
-          // $image.one('click', addCheck());
-          var addCheck = function(){
+          var addCheck = function()
+          {
             var $token = $('<div>');
             $(this).parent().append($token);
             $token.css({
@@ -52,8 +51,8 @@ var board = (function(){
                     left: '30%',
                     top: "40%",
                     display: "inline-block",
-                    width: "45px",
-                    height: "45px",
+                    width: "50px",
+                    height: "50px",
                     backgroundPosition: "center center",
                     backgroundImage: "url(images/check.jpg)"
             });
@@ -64,28 +63,25 @@ var board = (function(){
               if (indexNumToText>=0)
                 el[indexNumToText]=deck[idValue].name;
             });
-            // console.log(user);
           };
           $image.one('click', addCheck);
 
           // event listerner: remove token on double click
           // change the value of the array element from the tile name to the tile image id
+          // necessary in case user accidentally clicks on a tile and wants to remove the token
           $image.on('dblclick', function(){
             console.log('double click', $(this));
-
-            // $(this).css('width', '120');
             $(this).next().remove();
+            // reapply click event listener so token can be added again
             $(this).one('click', addCheck);
             let idValueString = $(this).attr('id');
             let idValue = parseInt(idValueString);
             let tileName = deck[idValue].name;
-            // console.log(tileName);
             user.forEach(function(el){
               let indexTextToNum = el.indexOf(tileName);
               if (indexTextToNum >=0 )
                 el[indexTextToNum] = idValue;
             });
-            // console.log(user);
           });
         }
         $box.append($image);
@@ -96,8 +92,6 @@ var board = (function(){
       results.push(deckIndexArray);
       results.push(nameArray);
       return results;
-    } // end of createRandomCard function
-
-
+    } 
   }
 });
