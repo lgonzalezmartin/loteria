@@ -1,11 +1,10 @@
 var board = (function(){
   return {
     // // randomNumberArrayCreator returns an array of the numbers 0-max in a random order
-    calledNumbers: function randomNumberArrayCreator(max, deckOfCards)
+    calledNumbers: function randomNumberArrayCreator(max)
     {
       var calledNumbers = [];
-      var deck = [];
-      var deck = deckOfCards;
+      
       var limit = 54;
       for(let i = 0; i < max ; i++)
       {
@@ -22,8 +21,8 @@ var board = (function(){
     // then it also adds event listeners to the 16 tiles in the card
     results: function createRandomCard(player, deckOfCards)
     {
-      var deck = deckOfCards;
-      var deckIndexArray = App.board()().calledNumbers(16, deckOfCards);
+
+      var deckIndexArray = App.board()().calledNumbers(16);
 
       var  nameArray = [];
 

@@ -2,10 +2,10 @@ $(function()
 {
   console.log("JS connected");
 
-  var deck = App.deckSource()().cards;
+  deck = App.deckSource()().cards;
   var deckOfCards = deck;
-  user = App.players()().playerRows('user', deck);
-  house = App.players()().playerRows('house', deck);
+  user = App.players()().playerRows('user');
+  house = App.players()().playerRows('house');
 
 
   var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
@@ -15,7 +15,7 @@ $(function()
   $('.deck').append($flippedCard);
   $('.flippedCard').append(placeholder);
 
-  var order = App.board()().calledNumbers(54, deck);
+  var order = App.board()().calledNumbers(54);
   var count = 0;
   var calledCards = [];
 

@@ -2,9 +2,9 @@ var players = (function(){
   return {
 
   // user and house are arrays; each one contains 4 arrays with 4 entries, which represent the rows and tiles of the userCard and houseCard
-  playerRows: function createPlayerArrays (player, deckOfCards)
+  playerRows: function createPlayerArrays (player)
       {
-        var toBeSpliced = App.board()().results(player, deckOfCards)[0];
+        var toBeSpliced = App.board()().results(player)[0];
 
         var row1 = toBeSpliced.splice(0, 4);
         var row2 = toBeSpliced.splice(0, 4);
