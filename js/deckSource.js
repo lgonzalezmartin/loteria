@@ -1,4 +1,4 @@
-var deck2 = (function(){
+var deckSource = (function(){
   return {
       cards: [
       {

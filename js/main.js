@@ -1,8 +1,8 @@
 $(function()
 {
   console.log("JS connected");
-  console.log(deck2);
-  var deck = deck2().cards;
+  console.log(App.deckSource()().cards);
+  var deck = App.deckSource()().cards;
 
   // // randomNumberArrayCreator returns an array of the numbers 0-max in a random order
   function randomNumberArrayCreator(max)
@@ -156,6 +156,7 @@ $(function()
       let gameOver = winCheckForHouse();
       if (gameOver)
       {
+        console.log(gameOver);
         setTimeout(function(){alert('House wins');}, 500);
       }
 
@@ -201,10 +202,15 @@ $(function()
   // Test code for winning functions
   var $testButton = $('<button>').text('Did I win?');
   $('.flippedCard').append($testButton);
-  $testButton.on('click', function(){
-    let gameOver = winCheck();
-    $(this).prop('disabled', true);
-  });
+
+
+    $testButton.on('click', function(){
+      let gameOver = winCheck();
+
+      $(this).prop('disabled', true);
+    });
+
+
 
   var possibleWins = [];
   // end of Test code; delete when done
