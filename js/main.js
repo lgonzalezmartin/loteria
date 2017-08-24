@@ -16,10 +16,7 @@ $(function()
   $('.deck').append($flippedCard);
   $('.flippedCard').append(placeholder);
 
-  function newRound()
-  {
 
-  }
   var order = App.board()().calledNumbers(54);
   var count = 0;
   calledCards = [];

@@ -92,8 +92,12 @@ var winLogicSource = (function(){
       this.column(house);
       this.corners(house);
       this.square(house);
-      let gameOver = this.cheatingCheck();
-      return gameOver;
+      // let gameOver = this.cheatingCheck();
+      if (possibleWins.length > 0)
+      {
+        gameOver = true;
+      }
+      return gameOver
     },
 
     cheatingCheck: function validWinCheck ()
@@ -105,7 +109,7 @@ var winLogicSource = (function(){
       if (validWins.length > 0)
         return true;
       else
-        return false;
+        return true;
     }
   }
 });

@@ -13,4 +13,12 @@ Agenda for Thursday:
 8. add logic for these modals
 9. add modal to select token, and its logic
 10. add option to see remaining cards flippedCard
-11. use an api to read the card names 
+11. use an api to read the card names
+
+var $testButtonPlayAgain = $('<button>').text('Play again!');
+$('.flippedCard').append($testButtonPlayAgain);
+$testButtonPlayAgain.on('click', newRound);
+
+var $testButtonSameSettings = $('<button>').text('Same settings!');
+$('.flippedCard').append($testButtonSameSettings);
+// $testButtonSameSettings.on('click', newRoundSameSettings);
