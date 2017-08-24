@@ -113,6 +113,55 @@ var winLogicSource = (function(){
         return true
       else
         return false;
+    },
+    addClickEvent: function addCheck()
+    {
+        var $token = $('<div>');
+        $(this).parent().append($token);
+        $token.css({
+                position: "absolute",
+                left: '30%',
+                top: "40%",
+                display: "inline-block",
+                width: "50px",
+                height: "50px",
+                backgroundPosition: "center center",
+                backgroundImage: "url(images/check.jpg)"
+        });
+        let idValueString = $(this).attr('id');
+        let idValue = parseInt(idValueString);
+        user.forEach(function(el){
+          let indexNumToText = el.indexOf(idValue);
+          if (indexNumToText>=0)
+            el[indexNumToText]=deck[idValue].name;
+        });
+    },
+
+    clearChecks: function removeChecks (playerArray)
+    {
+      playerArray.forEach(function(el)
+      {
+        for (let i = 0; i < 4; i++)
+        {
+          if (App.winLogicSource()().checkIfString(el[i]))
+          {
+            for (let j = 0; j < deck.length; j++)
+            {
+              if (deck[j].name === el[i])
+              {
+                // console.log(App.winLogicSource()().addClickEvent);
+                el[i] = j;
+                $(`#${j}`).next().remove();
+                $(`#${j}`).one('click', App.winLogicSource()().addClickEvent);
+                $(`#box${j} div`).remove();
+              }
+            }
+          }
+        }
+
+
+      });
+      return playerArray
     }
   }
 });

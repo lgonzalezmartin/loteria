@@ -7,9 +7,10 @@ $(function()
 
   // create user and hosue cards
   user = App.players()().playerRows('user');
-  console.log('user card', user);
+
+
   house = App.players()().playerRows('house');
-  console.log('house card', house);
+
 
   var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
   var $flippedCard= $('<img>').attr('src', '').css('width', '160px').css('height', '233px');
@@ -23,9 +24,20 @@ $(function()
   var count = 0;
   calledCards = [];
   gameOver = false;
+
+
   function newRoundSameSettings ()
   {
-    // user = App.players()().clearChecks
+    
+    house = App.winLogicSource()().clearChecks(house);
+    possibleWins = [];
+    validWins = [];
+    count = 0;
+    gameOver = false;
+    calledCards = [];
+    callTiles(200);
+
+
   }
 
   function callTiles(speed)
@@ -53,7 +65,7 @@ $(function()
 
    }, speed)
   }
-  callTiles(2000);
+  callTiles(500);
 
   function updatedHouse ()
   {
@@ -91,7 +103,7 @@ $(function()
 
   var $testButtonSameSettings = $('<button>').text('Same settings!');
   $('.flippedCard').append($testButtonSameSettings);
-  // $testButtonSameSettings.on('click', newRoundSameSettings);
+  $testButtonSameSettings.on('click', newRoundSameSettings);
 possibleWins = [];
 validWins = [];
 
