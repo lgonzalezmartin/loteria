@@ -1,7 +1,6 @@
 $(function()
 {
   console.log("JS connected");
-  console.log(App.deckSource()().cards);
   var deck = App.deckSource()().cards;
 
   // // randomNumberArrayCreator returns an array of the numbers 0-max in a random order
