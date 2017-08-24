@@ -3,7 +3,9 @@ check icon
 
 Agenda for Thursday:
 1. finish separating main into files
+DONE
 2. stop card iteration after button click (and alert for house win)
+DONE
 3. Flexbox--do all the css
 4. change: instead of alert: modal with 'play again' -> keep or change settings
 4. add modals to get: username and speed

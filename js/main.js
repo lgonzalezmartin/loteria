@@ -7,10 +7,7 @@ $(function()
 
   // create user and hosue cards
   user = App.players()().playerRows('user');
-
-
   house = App.players()().playerRows('house');
-
 
   var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
   var $flippedCard= $('<img>').attr('src', '').css('width', '160px').css('height', '233px');
@@ -19,16 +16,14 @@ $(function()
   $('.deck').append($flippedCard);
   $('.flippedCard').append(placeholder);
 
-
   var order = App.board()().calledNumbers(54);
   var count = 0;
   calledCards = [];
   gameOver = false;
 
-
   function newRoundSameSettings ()
   {
-    
+
     house = App.winLogicSource()().clearChecks(house);
     possibleWins = [];
     validWins = [];
@@ -36,8 +31,6 @@ $(function()
     gameOver = false;
     calledCards = [];
     callTiles(200);
-
-
   }
 
   function callTiles(speed)
@@ -65,6 +58,7 @@ $(function()
 
    }, speed)
   }
+
   callTiles(500);
 
   function updatedHouse ()
