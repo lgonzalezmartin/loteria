@@ -23,7 +23,7 @@ var board = (function(){
     // then it also adds event listeners to the 16 tiles in the card
     // results returns an object with 2 arrays: one containing the
     // card numbers the other containing the card names
-    results: function createRandomCard(player, deckOfCards)
+    results: function createRandomCard(player)
     {
       var deckIndexArray = App.board()().calledNumbers(16); // get 16 random numbers
       var  nameArray = [];
@@ -92,6 +92,6 @@ var board = (function(){
       results.push(deckIndexArray);
       results.push(nameArray);
       return results;
-    } 
+    }
   }
 });

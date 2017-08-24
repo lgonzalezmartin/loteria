@@ -82,7 +82,10 @@ var winLogicSource = (function(){
       if (gameOver)
         alert("You won!");
       else
+      {
+        gameOver = true;
         alert('Nice try; you lose')
+      }
     },
 
     houseWinCheck: function winCheckForHouse ()
@@ -107,9 +110,9 @@ var winLogicSource = (function(){
           validWins.push(el);
       });
       if (validWins.length > 0)
-        return true;
+        return true
       else
-        return true;
+        return false;
     }
   }
 });
