@@ -16,29 +16,38 @@ $(function()
   $('.deck').append($flippedCard);
   $('.flippedCard').append(placeholder);
 
+  function newRound()
+  {
+
+  }
   var order = App.board()().calledNumbers(54);
   var count = 0;
   calledCards = [];
   gameOver = false;
+
   function callTiles(speed)
   {
    setTimeout(function()
    {
-      calledCards.push(deck[order[count]].name);
-      // $flippedCard.attr('src', deck[order[count]].url);
-      $flippedCard.attr('src', deck[order[count]].url);
-      updatedHouse(count);
-      gameOver = App.winLogicSource()().houseWinCheck();
-      if (gameOver)
-      {
-        setTimeout(function(){alert('House wins');}, 500);
-      }
+     if (!gameOver)
+     {
+       calledCards.push(deck[order[count]].name);
+       // $flippedCard.attr('src', deck[order[count]].url);
+       $flippedCard.attr('src', deck[order[count]].url);
+       updatedHouse(count);
+       gameOver = App.winLogicSource()().houseWinCheck();
+       if (gameOver)
+       {
+         setTimeout(function(){alert('House wins');}, 500);
+       }
 
-      if (count < 53 && validWins.length === 0 && !gameOver)
-      {
-        count++;
-        callTiles(speed);
-      }
+       if (count < 53 && validWins.length === 0 && !gameOver)
+       {
+         count++;
+         callTiles(speed);
+       }
+     }
+
    }, speed)
   }
   callTiles(2000);
@@ -72,28 +81,11 @@ $(function()
   // Test code for winning functions
   var $testButton = $('<button>').text('Did I win?');
   $('.flippedCard').append($testButton);
-
-
-    $testButton.on('click', function(){
-      let gameOver = App.winLogicSource()().userWinCheck();
-
-      $(this).prop('disabled', true);
-    });
+  $testButton.on('click', function(){
+    let gameOver = App.winLogicSource()().userWinCheck();
+    $(this).prop('disabled', true);
+  });
 possibleWins = [];
 validWins = [];
 
-
-
-
-
-  // Self-invoking callTiles functions that works
-  // (function callTiles (i)
-  // {
-  //  setTimeout(function (){
-  //    $flippedCard.attr('src', deck[order[count]].url);
-  //    if (--i)
-  //     count++;
-  //     callTiles(i);
-  //  }, 3000)
-  // })(54);
 });
