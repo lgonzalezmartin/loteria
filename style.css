@@ -1,16 +1,33 @@
+.space
+{
+  display: flex;
+  justify-content: space-around;
+}
 .deck
 {
-  background: blue;
+  background: rgb(90,180,90);
+  max-width: 520px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.flippedCard
+{
+
 }
 .userCard
 {
-  background: grey;
+  background: #FFA6A6;
   border: 2px solid black;
+  max-width: 520px;
 }
 .houseCard
 {
   background: #8abcea;
   border: 2px solid black;
+  max-width: 520px;
 }
 .tile
 {
@@ -30,6 +47,7 @@
  color: white;
  font-family: 'Indie Flower', cursive;
  background-color: #e05757;
+ max-height: 400px;
  }
 
  h1
@@ -45,6 +63,8 @@
 {
   border-radius: 55%;
 }
-.container{
-        width: 1285px;
-    }
+.container
+{
+  /*width: 1285px*/
+  width: 1800px;
+}

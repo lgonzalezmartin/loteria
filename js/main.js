@@ -8,12 +8,12 @@ $(function()
   user = App.players()().playerRows('user');
   house = App.players()().playerRows('house');
 
-  var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
+  var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px').addClass('img-rounded');
   var $flippedCard= $('<img>').attr('src', '').css('width', '160px').css('height', '233px');
-  var placeholder = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
+  // var placeholder = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
   $('.deck').append($deck);
   $('.deck').append($flippedCard);
-  $('.flippedCard').append(placeholder);
+  // $('.flippedCard').append(placeholder);
 
   var order = App.board()().calledNumbers(54);
   var count = 0;
@@ -43,7 +43,7 @@ $(function()
        console.log(speed);
        calledCards.push(deck[order[count]].name);
        // $flippedCard.attr('src', deck[order[count]].url);
-       $flippedCard.attr('src', deck[order[count]].url);
+       $flippedCard.attr('src', deck[order[count]].url).addClass('img-rounded');
        console.log(order, deck[order[count]].name);
        updatedHouse(count);
        gameOver = App.winLogicSource()().houseWinCheck();
@@ -101,7 +101,7 @@ $(function()
     $(this).prop('disabled', true);
   });
 
-  var $testButtonSameSettings = $('<button>').addClass('btn-info btn').text('Same settings!');
+  var $testButtonSameSettings = $('<button>').addClass('btn-info btn').text('Play again!');
   $('.flippedCard').append($testButtonSameSettings);
   $testButtonSameSettings.on('click', newRoundSameSettings);
 
