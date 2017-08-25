@@ -147,7 +147,7 @@ var deckSource = (function(){
         name: "musico"
       },
       {
-        url: "images/Deck/negrito.jpg",
+        url: "images/Deck/perro.jpg",
         name: "negrito"
       },
       {
@@ -191,7 +191,7 @@ var deckSource = (function(){
         name: "sandia"
       },
       {
-        url: "images/Deck/sirena.jpg",
+        url: "images/Deck/gato.jpg",
         name: "sirena"
       },
       {
