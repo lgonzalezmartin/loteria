@@ -23,6 +23,7 @@ $(function()
   var $instructions = $('<button>').attr('type', 'button').addClass('btn-lg btn-warning').attr('id', 'instructions').text('How to play');
   $buttonBar.append($instructions);
 
+
   // create deck
   deck = App.deckSource()().cards;
 
@@ -35,6 +36,7 @@ $(function()
   // var placeholder = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
   $('.deck').append($deck);
   $('.deck').append($flippedCard);
+  $flippedCard.hide();
   // $('.flippedCard').append(placeholder);
 
   var order = App.board()().calledNumbers(54);
@@ -87,7 +89,7 @@ $(function()
    }, speed)
   }
 
-  // callTiles(2000);
+  callTiles(2000);
 
   function updatedHouse ()
   {
