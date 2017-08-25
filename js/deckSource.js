@@ -1,4 +1,4 @@
-// The tiles necessary for playing loteria are stored here
+// The 54 tiles necessary for playing loteria are stored here
 var deckSource = (function(){
   return {
       cards: [

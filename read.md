@@ -46,3 +46,4 @@ Since the playing cards and tiles in Loteria are so colorful, I knew I wanted th
 
 
 Game website: https://github.kdc.capitalone.com/pages/TID414/unit-1-project/
+Trello board (which includes user stories): https://trello.com/b/gVfgetfB/mexican-bingo

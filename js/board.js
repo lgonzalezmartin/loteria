@@ -27,6 +27,7 @@ var board = (function(){
     {
       var deckIndexArray = App.board()().calledNumbers(16); // get 16 random numbers
       var  nameArray = [];
+      // displaying playing cards
       for (let i = 0; i < 16; i++)
       {
         var $box = $('<div>').addClass("col-sm-3 tile").css('position', 'relative');
@@ -35,6 +36,8 @@ var board = (function(){
         {
           $box.attr('id', `box${deckIndexArray[i]}`);
         }
+
+        // add click event listeners to the 16 tiles in the user card
         if (player==="user")
         {
           $image.attr('id', deckIndexArray[i]);

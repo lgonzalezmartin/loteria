@@ -1,9 +1,8 @@
 $(function()
 {
   console.log("JS connected");
-  console.log("Checking if the push went through");
 
-  // Test code for winning functions
+  // Temporary buttons until I create modals
 
   var $buttonBar = $('<div>').attr('id', 'buttonBar').addClass('btn-toolbar');
   $('.flippedCard').append($buttonBar);
@@ -29,29 +28,28 @@ $(function()
   // $('.space').append($writtenInstructions);
   // var $instructionsGif = $('<img>').attr('src', 'images/Loteria_how_to_win.gif');
   // $writtenInstructions.append($instructionsGif);
+
   // create deck
   deck = App.deckSource()().cards;
 
-  // create user and hosue cards
+  // create user and house cards
   user = App.players()().playerRows('user');
   house = App.players()().playerRows('house');
 
   var $deck = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px').addClass('img-rounded');
   var $flippedCard= $('<img>').attr('src', '').css('width', '160px').css('height', '233px');
-  // var placeholder = $('<img>').attr('src', 'images/back.jpg').css('width', '160px').css('height', '233px');
   $('.deck').append($deck);
   $('.deck').append($flippedCard);
   $flippedCard.hide();
-  // $('.flippedCard').append(placeholder);
 
   var order = App.board()().calledNumbers(54);
   var count = 0;
   calledCards = [];
   gameOver = false;
 
+  // resets game if user wants to play again
   function newRoundSameSettings ()
   {
-    // $flippedCard.attr('src', 'images/back.jpg');
     $flippedCard.hide();
     user = App.winLogicSource()().clearChecks(user);
     house = App.winLogicSource()().clearChecks(house);
@@ -62,10 +60,10 @@ $(function()
     gameOver = false;
     calledCards = [];
     $('#loteria').prop('disabled', false);
-
-    callTiles(2000);
+    callTiles(4000);
   }
 
+  // callTiles starts the game
   function callTiles(speed)
   {
    setTimeout(function()
@@ -94,8 +92,10 @@ $(function()
    }, speed)
   }
 
-  callTiles(2000);
+  callTiles(4000);
 
+
+  // every time a new tile is called, updatedHouse checks if it resulted in a house victory 
   function updatedHouse ()
   {
     house.forEach(function(el){

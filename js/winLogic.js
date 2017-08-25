@@ -19,7 +19,7 @@ var winLogicSource = (function(){
         }
       });
     },
-
+    // columnWin checks to see if a column of the user or house card has tokens in all its entries
     column: function columnWin (card)
     {
       for (let i = 0; i < 4; i++)
@@ -36,6 +36,7 @@ var winLogicSource = (function(){
       }
     },
 
+    // cornerWin checks to see if all four corners of the user or house card have tokens
     corners: function cornersWin (card)
     {
       if ((typeof card[0][0]) == 'string' && (typeof card[0][3]) == 'string' && (typeof card[3][0]) == 'string' && (typeof card[3][3]) == 'string')
@@ -49,6 +50,7 @@ var winLogicSource = (function(){
       }
     },
 
+    // squareWin checks to see if there are 4 tokens in a square configuration anywhere on the user card or the house card
     square: function squareWin(card)
     {
       var userInOne = [];
@@ -71,6 +73,7 @@ var winLogicSource = (function(){
       });
     },
 
+    // determines if user won
     userWinCheck: function winCheck ()
     {
       possibleWins = [];
@@ -88,6 +91,7 @@ var winLogicSource = (function(){
       }
     },
 
+    // determines if house won
     houseWinCheck: function winCheckForHouse ()
     {
       possibleWins = [];
@@ -103,6 +107,7 @@ var winLogicSource = (function(){
       return gameOver
     },
 
+    // determines if user actually won, or if they cheated/made a mistake
     cheatingCheck: function validWinCheck ()
     {
       possibleWins.forEach(function(el){
@@ -137,6 +142,7 @@ var winLogicSource = (function(){
         });
     },
 
+    // resets the playing cards if the user wants to play again by removing the check marks from both playing cards
     clearChecks: function removeChecks (playerArray)
     {
       playerArray.forEach(function(el)
@@ -149,7 +155,6 @@ var winLogicSource = (function(){
             {
               if (deck[j].name === el[i])
               {
-                // console.log(App.winLogicSource()().addClickEvent);
                 el[i] = j;
                 $(`#${j}`).next().remove();
                 $(`#${j}`).one('click', App.winLogicSource()().addClickEvent);
