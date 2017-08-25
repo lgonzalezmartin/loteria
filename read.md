@@ -28,3 +28,6 @@ $('.flippedCard').append($testButtonSameSettings);
 git push github master
 // pushes to my personal github
 change paths to pictures
+
+
+Game website: https://github.kdc.capitalone.com/pages/TID414/unit-1-project/

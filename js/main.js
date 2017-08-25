@@ -23,6 +23,8 @@ $(function()
 
   function newRoundSameSettings ()
   {
+    // $flippedCard.attr('src', 'images/back.jpg');
+    $flippedCard.hide();
     user = App.winLogicSource()().clearChecks(user);
     house = App.winLogicSource()().clearChecks(house);
     possibleWins = [];
@@ -32,6 +34,7 @@ $(function()
     gameOver = false;
     calledCards = [];
     $('#loteria').prop('disabled', false);
+
     callTiles(2000);
   }
 
@@ -41,9 +44,11 @@ $(function()
    {
      if (!gameOver)
      {
+       $flippedCard.show();
        calledCards.push(deck[order[count]].name);
        // $flippedCard.attr('src', deck[order[count]].url);
        $flippedCard.attr('src', deck[order[count]].url).addClass('img-rounded');
+
        updatedHouse(count);
        gameOver = App.winLogicSource()().houseWinCheck();
        if (gameOver)
