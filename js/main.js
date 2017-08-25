@@ -18,6 +18,49 @@ $(function()
   $buttonBar.append($testButtonSameSettings);
   $testButtonSameSettings.on('click', newRoundSameSettings);
 
+  var $start = $('<button>').attr('id', 'start').attr('type', 'button').text('Start').addClass('btn-warning btn-lg');
+  $buttonBar.append($start);
+  $start.on('click', function(){
+    callTiles(4000);
+    $start.attr('disabled', true);
+  });
+
+  // attemp begin
+
+  // $buttonBar.append(
+  //   `
+  //   <div class="container">
+  //     <!-- Trigger the modal with a button -->
+  //     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+  //
+  //     <!-- Modal -->
+  //     <div class="modal fade" id="myModal" role="dialog">
+  //       <div class="modal-dialog">
+  //
+  //         <!-- Modal content-->
+  //         <div class="modal-content">
+  //           <div class="modal-header">
+  //             <button type="button" class="close" data-dismiss="modal">&times;</button>
+  //             <h4 class="modal-title">Modal Header</h4>
+  //           </div>
+  //           <div class="modal-body">
+  //             <p>Some text in the modal.</p>
+  //           </div>
+  //           <div class="modal-footer">
+  //             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  //           </div>
+  //         </div>
+  //
+  //       </div>
+  //     </div>
+  //
+  //   </div>
+  //   `
+  // );
+  // attemp end
+
+
+
   // Try to add instructions modal
   // var $instructions = $('<button>').attr('type', 'button').addClass('btn-lg btn-warning').attr('id', 'instructions').attr('data-toggle', 'modal').attr('data-target', '#myModal').text('How to play');
   // $buttonBar.append($instructions);
@@ -92,10 +135,10 @@ $(function()
    }, speed)
   }
 
-  callTiles(4000);
+  // callTiles(4000);
 
 
-  // every time a new tile is called, updatedHouse checks if it resulted in a house victory 
+  // every time a new tile is called, updatedHouse checks if it resulted in a house victory
   function updatedHouse ()
   {
     house.forEach(function(el){
