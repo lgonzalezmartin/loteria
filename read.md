@@ -37,30 +37,12 @@ https://en.wikipedia.org/wiki/Loter%C3%ADa
 
 Rules of the game:
 
-
+Loteria is a game of change. There is a deck with 54 tiles. Each tile is a picture. The user and house each get a different playing card that has 16 random tiles arranged in 4 rows of 4. The tiles in the deck are flipped one at a time. If your playing card has the tile that was just flipped, you add a check to that tile on your card. Whoever gets four checked tiles in a row, a column, a square, or in the four corners wins.
 
 Process for turning game into a web app (wireframes, blockers/issues that popped up):
 
+Since the playing cards and tiles in Loteria are so colorful, I knew I wanted the rest of my web app to be very clean and simple: I wanted most of the color to come from the tiles. The current version of my website resembles my wireframes pretty closely. As far as the colors go, I knew I wanted a white background for most of the game, and the title of the page has a white font on a light tomato color. From there it was just a matter of finding complimentary colors for my buttons and the background of my playing cards. The font I choose is from Google fonts. I chose a style that resembles handwriting because I wanted to continue the minimalistic look.
 
-Agenda for Thursday:
-
-
-var $testButtonPlayAgain = $('<button>').text('Play again!');
-$('.flippedCard').append($testButtonPlayAgain);
-$testButtonPlayAgain.on('click', newRound);
-
-var $testButtonSameSettings = $('<button>').text('Same settings!');
-$('.flippedCard').append($testButtonSameSettings);
-// $testButtonSameSettings.on('click', newRoundSameSettings);
-
-git push github master
-// pushes to my personal github
-change paths to pictures
 
 
 Game website: https://github.kdc.capitalone.com/pages/TID414/unit-1-project/
-
-
-Image sources:
-Check mark: https://pixabay.com/en/symbol-gui-internet-internet-page-2480163/
-Deck cards
