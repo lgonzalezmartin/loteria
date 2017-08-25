@@ -19,11 +19,16 @@ $(function()
   $buttonBar.append($testButtonSameSettings);
   $testButtonSameSettings.on('click', newRoundSameSettings);
 
-  // `<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="instructions">How to play</button>`
-  var $instructions = $('<button>').attr('type', 'button').addClass('btn-lg btn-warning').attr('id', 'instructions').text('How to play');
-  $buttonBar.append($instructions);
+  // Try to add instructions modal
+  // var $instructions = $('<button>').attr('type', 'button').addClass('btn-lg btn-warning').attr('id', 'instructions').attr('data-toggle', 'modal').attr('data-target', '#myModal').text('How to play');
+  // $buttonBar.append($instructions);
+  //
+  // $instructions.on('click', )
 
-
+  // var $writtenInstructions = $('<div>');
+  // $('.space').append($writtenInstructions);
+  // var $instructionsGif = $('<img>').attr('src', 'images/Loteria_how_to_win.gif');
+  // $writtenInstructions.append($instructionsGif);
   // create deck
   deck = App.deckSource()().cards;
 
