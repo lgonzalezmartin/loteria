@@ -2,6 +2,27 @@ $(function()
 {
   console.log("JS connected");
   console.log("Checking if the push went through");
+
+  // Test code for winning functions
+
+  var $buttonBar = $('<div>').attr('id', 'buttonBar').addClass('btn-toolbar');
+  $('.flippedCard').append($buttonBar);
+
+  var $testButton = $('<button>').attr('id', 'loteria').attr('type', 'button').text('Loteria').addClass('btn-success btn-lg');
+  $buttonBar.append($testButton);
+  $testButton.on('click', function(){
+    let gameOver = App.winLogicSource()().userWinCheck();
+    $(this).prop('disabled', true);
+  });
+
+  var $testButtonSameSettings = $('<button>').attr('type', 'button').addClass('btn-info btn-lg').text('Play again!');
+  $buttonBar.append($testButtonSameSettings);
+  $testButtonSameSettings.on('click', newRoundSameSettings);
+
+  // `<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="instructions">How to play</button>`
+  var $instructions = $('<button>').attr('type', 'button').addClass('btn-lg btn-warning').attr('id', 'instructions').text('How to play');
+  $buttonBar.append($instructions);
+
   // create deck
   deck = App.deckSource()().cards;
 
@@ -66,7 +87,7 @@ $(function()
    }, speed)
   }
 
-  callTiles(2000);
+  // callTiles(2000);
 
   function updatedHouse ()
   {
@@ -94,17 +115,7 @@ $(function()
 
   }
 
-  // Test code for winning functions
-  var $testButton = $('<button>').attr('id', 'loteria').text('Loteria').addClass('btn-success btn');
-  $('.flippedCard').append($testButton);
-  $testButton.on('click', function(){
-    let gameOver = App.winLogicSource()().userWinCheck();
-    $(this).prop('disabled', true);
-  });
 
-  var $testButtonSameSettings = $('<button>').addClass('btn-info btn').text('Play again!');
-  $('.flippedCard').append($testButtonSameSettings);
-  $testButtonSameSettings.on('click', newRoundSameSettings);
 
   // bootstrap test code
   //
